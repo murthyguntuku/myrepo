@@ -1,9 +1,9 @@
-peline {
-    agent { docker { image 'maven:3.3.3' } }
+pipeline {
+    agent { docker { image 'node:6.3' } }
     stages {
         stage('build') {
             steps {
-                sh 'echo hellow world'
+                sh 'npm --version'
             }
         }
     }
