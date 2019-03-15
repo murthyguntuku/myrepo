@@ -6,13 +6,12 @@ pipeline {
                 sh 'ls'
             }
         }
-    
-   post {
+    }
+    post {
     failure {
         mail to: '32murthy@gmail.com',
              subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
              body: "Something is wrong with ${env.BUILD_URL}"
     }
-}
 }
 }
