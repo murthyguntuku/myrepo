@@ -1,15 +1,7 @@
-pipeline {
-    agent any
-    stages {
-        stage('Test') {
-            steps {
-                sh './gradlew check'
-            }
-        }
-    }
-    post {
-        always {
-            junit 'build/reports/**/*.xml'
-        }
+post {
+    failure {
+        mail to: '32murthy@gmail.com',
+             subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
+             body: "Something is wrong with ${env.BUILD_URL}"
     }
 }
